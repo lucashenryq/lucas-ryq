@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Dark Theme (Default) */
+[data-theme="dark"] {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --bg-secondary-hover: #374151;
+  --bg-accent: #3b82f6;
+  --bg-accent-hover: #2563eb;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-accent: #ffffff;
+  --border: #374151;
+  --border-hover: #4b5563;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --purple: #8b5cf6;
+  --green: #10b981;
+  --yellow: #f59e0b;
+  --blue: #3b82f6;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-secondary-hover: #e2e8f0;
+  --bg-accent: #3b82f6;
+  --bg-accent-hover: #2563eb;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-accent: #ffffff;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --purple: #8b5cf6;
+  --green: #10b981;
+  --yellow: #f59e0b;
+  --blue: #3b82f6;
+}
+
+/* Serika Theme (Inspired by typing websites) */
+[data-theme="serika"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-secondary-hover: #3a3a3a;
+  --bg-accent: #fbbf24;
+  --bg-accent-hover: #f59e0b;
+  --text-primary: #fbbf24;
+  --text-secondary: #a3a3a3;
+  --text-accent: #1a1a1a;
+  --border: #3a3a3a;
+  --border-hover: #4a4a4a;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --purple: #a78bfa;
+  --green: #34d399;
+  --yellow: #fbbf24;
+  --blue: #60a5fa;
+}
+
+/* Modern Theme (Gradients and vibrant colors) */
+[data-theme="modern"] {
+  --bg-primary: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+  --bg-secondary: rgba(30, 41, 59, 0.8);
+  --bg-secondary-hover: rgba(51, 65, 85, 0.9);
+  --bg-accent: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --bg-accent-hover: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-accent: #ffffff;
+  --border: rgba(148, 163, 184, 0.2);
+  --border-hover: rgba(148, 163, 184, 0.3);
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --purple: #a855f7;
+  --green: #10b981;
+  --yellow: #eab308;
+  --blue: #3b82f6;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="modern"] body {
+  background: var(--bg-primary);
+}
+
+/* Theme utilities */
+@layer utilities {
+  .bg-theme-primary { background-color: var(--bg-primary); }
+  .bg-theme-secondary { background-color: var(--bg-secondary); }
+  .bg-theme-secondary-hover { background-color: var(--bg-secondary-hover); }
+  .bg-theme-accent { background: var(--bg-accent); }
+  .bg-theme-accent-hover { background: var(--bg-accent-hover); }
+  
+  .text-theme-primary { color: var(--text-primary); }
+  .text-theme-secondary { color: var(--text-secondary); }
+  .text-theme-accent { color: var(--text-accent); }
+  .text-theme-accent-text { color: var(--text-accent); }
+  
+  .border-theme { border-color: var(--border); }
+  .border-theme-hover { border-color: var(--border-hover); }
+  
+  .text-theme-success { color: var(--success); }
+  .text-theme-warning { color: var(--warning); }
+  .text-theme-error { color: var(--error); }
+  .text-theme-purple { color: var(--purple); }
+  .text-theme-green { color: var(--green); }
+  .text-theme-yellow { color: var(--yellow); }
+  .text-theme-blue { color: var(--blue); }
+  
+  .scrollbar-hide {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    -webkit-scrollbar: none;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .fabricante-select {
+    /* Limit dropdown height to show approximately 4 options */
+    option {
+      padding: 8px 12px;
+      line-height: 1.4;
+    }
+  }
+  
+  /* Control the dropdown appearance for WebKit browsers */
+  .fabricante-select:focus {
+    overflow-y: auto;
+    max-height: calc(4 * 2.5rem); /* Approximate height for 4 options */
+  }
+  
+  /* Hide scrollbar for select dropdown */
+  .fabricante-select option {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  
+  .fabricante-select option:first-child {
+    color: var(--text-secondary);
+  }
+}
