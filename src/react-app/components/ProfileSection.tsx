@@ -1,4 +1,4 @@
-import { MapPin, Calendar, Code2, Figma, Github } from 'lucide-react';
+import { MapPin, Calendar, Code2, Figma, Github, Heart, Database, Layout, MessageSquareText, Sparkles, Paintbrush, Atom, Triangle, Zap } from 'lucide-react';
 
 // Custom Gemini Icon Component
 const GeminiIcon = ({
@@ -10,7 +10,7 @@ const GeminiIcon = ({
              C17 8 22 13 28 14
              C22 15 17 20 16 26
              C15 20 10 15 4 14
-             C10 13 15 8 16 2Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+             C10 13 15 8 16 2Z" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>;
 
 // Custom Claude Icon Component
@@ -45,52 +45,32 @@ const ChatGPTIcon = ({
     <use href="#a" transform="rotate(240 1203 1203)" />
     <use href="#a" transform="rotate(300 1203 1203)" />
   </svg>;
-export default function ProfileSection() {
-  const software = [{
-    name: 'Cursor',
-    level: 'IDE',
-    icon: Code2
-  }, {
-    name: 'Figma',
-    level: 'Design',
-    icon: Figma
-  }, {
-    name: 'Github',
-    level: 'Versionamento',
-    icon: Github
-  }, {
-    name: 'ChatGPT',
-    level: 'Análise',
-    icon: ChatGPTIcon
-  }, {
-    name: 'Gemini',
-    level: 'Integração',
-    icon: GeminiIcon
-  }, {
-    name: 'Claude',
-    level: 'Codificação',
-    icon: ClaudeIcon
-  }, {
-    name: 'Grok',
-    level: 'Pesquisa',
-    icon: GrokIcon
-  }];
-  const languages = [{
-    name: 'Português',
-    level: 'Nativo'
-  }, {
-    name: 'Inglês',
-    level: 'Técnico'
-  }, {
-    name: 'Japonês',
-    level: 'Interessado'
-  }, {
-    name: 'Russo',
-    level: 'Interessado'
-  }];
 
-  // Calculate experience metrics
-  return <div className="space-y-4">
+export default function ProfileSection() {
+  const skills = [
+    { name: 'UX/UI', level: 'Design', icon: Layout },
+    { name: 'Prompt Engineer', level: 'IA', icon: MessageSquareText },
+    { name: 'Vibe Coding', level: 'Desenvolvimento', icon: Sparkles },
+    { name: 'Tailwind CSS', level: 'Estilização', icon: Paintbrush },
+    { name: 'React.js', level: 'Frontend', icon: Atom },
+    { name: 'Vue.js', level: 'Frontend', icon: Triangle },
+    { name: 'Vite', level: 'Build Tool', icon: Zap },
+    { name: 'ChatGPT', level: 'Análise', icon: ChatGPTIcon },
+    { name: 'Gemini', level: 'Integração', icon: GeminiIcon },
+    { name: 'Claude', level: 'Codificação', icon: ClaudeIcon },
+    { name: 'Grok', level: 'Pesquisa', icon: GrokIcon }
+  ];
+
+  const tools = [
+    { name: 'Lovable', level: 'Produtividade', icon: Heart },
+    { name: 'Supabase', level: 'Backend', icon: Database },
+    { name: 'Cursor', level: 'IDE', icon: Code2 },
+    { name: 'Figma', level: 'Design', icon: Figma },
+    { name: 'Github', level: 'Versionamento', icon: Github }
+  ];
+
+  return (
+    <div className="space-y-4">
       {/* Profile Card */}
       <div className="bg-theme-secondary rounded-xl p-6 border border-theme">
         <div className="flex items-start space-x-4 mb-4">
@@ -116,14 +96,33 @@ export default function ProfileSection() {
         </div>
       </div>
 
-      {/* Skills and Languages - Side by side on mobile only */}
+      {/* Skills and Tools */}
       <div className="grid grid-cols-1 xl:grid-cols-1 gap-4 xl:space-y-4 xl:block">
         <div className="grid grid-cols-2 xl:grid-cols-1 gap-4 xl:space-y-4 xl:block">
-          {/* Software & Tools */}
+          {/* Habilidades */}
           <div className="bg-theme-secondary rounded-xl p-6 border border-theme">
             <h3 className="font-semibold text-theme-primary mb-4">Habilidades</h3>
             <div className="space-y-3">
-              {software.map((tool, index) => {
+              {skills.map((skill, index) => {
+              const IconComponent = skill.icon;
+              return <div key={index} className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <IconComponent className="w-4 h-4 text-theme-primary" />
+                      <span className="text-sm font-medium text-theme-primary">{skill.name}</span>
+                    </div>
+                    <span className="text-xs text-theme-secondary bg-theme-primary/10 px-2 py-1 rounded">
+                      {skill.level}
+                    </span>
+                  </div>;
+            })}
+            </div>
+          </div>
+
+          {/* Ferramentas */}
+          <div className="bg-theme-secondary rounded-xl p-6 border border-theme">
+            <h3 className="font-semibold text-theme-primary mb-4">Ferramentas</h3>
+            <div className="space-y-2">
+              {tools.map((tool, index) => {
               const IconComponent = tool.icon;
               return <div key={index} className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -137,20 +136,8 @@ export default function ProfileSection() {
             })}
             </div>
           </div>
-
-          {/* Languages */}
-          <div className="bg-theme-secondary rounded-xl p-6 border border-theme">
-            <h3 className="font-semibold text-theme-primary mb-4">Idiomas</h3>
-            <div className="space-y-2">
-              {languages.map((lang, index) => <div key={index} className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-theme-primary">{lang.name}</span>
-                  <span className="text-xs text-theme-secondary bg-theme-primary/10 px-2 py-1 rounded">
-                    {lang.level}
-                  </span>
-                </div>)}
-            </div>
-          </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 }
