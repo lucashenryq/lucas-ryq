@@ -54,11 +54,7 @@ export default function ProfileSection() {
     { name: 'Tailwind CSS', level: 'Estilização', icon: Paintbrush },
     { name: 'React.js', level: 'Frontend', icon: Atom },
     { name: 'Vue.js', level: 'Frontend', icon: Triangle },
-    { name: 'Vite', level: 'Build Tool', icon: Zap },
-    { name: 'ChatGPT', level: 'Análise', icon: ChatGPTIcon },
-    { name: 'Gemini', level: 'Integração', icon: GeminiIcon },
-    { name: 'Claude', level: 'Codificação', icon: ClaudeIcon },
-    { name: 'Grok', level: 'Pesquisa', icon: GrokIcon }
+    { name: 'Vite', level: 'Build Tool', icon: Zap }
   ];
 
   const tools = [
